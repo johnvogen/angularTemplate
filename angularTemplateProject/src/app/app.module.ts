@@ -5,16 +5,20 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { BannerComponent } from './banner/banner.component';
 import { FooterComponent } from './footer/footer.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SecondaryComponent } from './secondary/secondary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     BannerComponent,
-    FooterComponent
+    FooterComponent,
+    SecondaryComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
