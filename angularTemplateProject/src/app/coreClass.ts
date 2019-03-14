@@ -1,4 +1,4 @@
-export class Greeter {
+export class coreClass {
   greeting: string;
 
 

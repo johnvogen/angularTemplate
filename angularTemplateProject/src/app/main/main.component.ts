@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import { Greeter } from '../greeter';
+import { coreClass } from '../coreClass';
 
 
 @Component({
@@ -10,17 +10,22 @@ import { Greeter } from '../greeter';
 })
 export class MainComponent implements OnInit {
 
-  greeter = new Greeter(34, "universe", 78,7,8,9);
+  core = new coreClass(34, "universe", null, 7, 8);
 
   constructor() {
   }
 
   ngOnInit() {
+
+    //this works in ngOnInit but not below
+    $('button').on('click', function () {
+      alert("Button Clicked");
+    });
+
   }
 
-  myFunction():any {
-    return this.greeter.optionals();
-
+  myFunction(): any {
+    return this.core.optionals();
   }
 
 }
