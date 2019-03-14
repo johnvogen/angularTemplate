@@ -11,6 +11,12 @@ import { InputService } from '../input.service';
 })
 export class MainComponent implements OnInit {
 
+
+  callService() {
+    this.add();
+  }
+
+
   core = new coreClass(34, "universe", null, 7, 8);
 
   data = {};
@@ -179,12 +185,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
 
-    //this works in ngOnInit but not below
-    $('button').on('click', function () {
-      
-    });
-    this.add();
-
   }
 
   addGlobals(resp): void {
@@ -242,22 +242,6 @@ export class MainComponent implements OnInit {
     this.inputService.postData(resp1 as string)
       .subscribe(results => {
         this.outputs = JSON.parse(JSON.stringify(results));
-
-        //var first: any = this.outputs.output_show_first;
-        //var second: any = this.outputs_output_show_second;
-        //var third: any = this.outputs.output_show_third;
-        //var fourth: any = this.outputs.output_show_fourth;
-        //var fifth: any = this.outputs.output_show_fifth;
-        //var sixth: any = this.outputs.output_show_sixth;
-        //$("." + first).css("order", "1");
-        //$("." + second).css("order", "2");
-        //$("." + third).css("order", "3");
-        //$("." + fourth).css("order", "4");
-        //$("." + fifth).css("order", "5");
-        //$("." + sixth).css("order", "6");
-
-
-        //$("body").show();
       });
   }
 
