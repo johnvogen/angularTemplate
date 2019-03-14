@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import { coreClass } from '../coreClass';
+//import { coreClass } from '../coreClass';  //example of how to import an external class
 import { InputService } from '../input.service';
-
 
 @Component({
   selector: 'app-main',
@@ -11,17 +10,7 @@ import { InputService } from '../input.service';
 })
 export class MainComponent implements OnInit {
 
-
-  callService() {
-    this.add();
-  }
-
-
-  core = new coreClass(34, "universe", null, 7, 8);
-
-  data = {};
-  inputs = {};
-  localData_v6 = {
+  inputs = {
     input_claims_ytdDental: 1000,
     input_claims_ytdMedical: 2000,
     input_claims_ytdRx: 3000,
@@ -77,172 +66,48 @@ export class MainComponent implements OnInit {
     input_tba_YTDcontER: 3400,
     input_ysa_DCFSAbal: 3333,
     input_ysa_HCFSAbal: 777,
-    input_TaxRate: 0.25
+    input_TaxRate: 0.25,
+    input_global_SingleHSA: 3450,
+    input_global_FamilyHSA: 6900,
+    input_global_HSACatchup: 1000,
+    input_global_DCFSA: 5000,
+    input_global_HCFSA: 2650,
+    input_global_LtdPurpHCFSA: 2650,
+    input_global_DCLimit: 18500,
+    input_global_401kCatchup: 6000,
+    input_global_AEstart: "2018-10-10",
+    input_global_AEend: "2018-11-01",
+    input_global_TaxBracket1: 9525,
+    input_global_TaxBracket2: 38700,
+    input_global_TaxBracket3: 82500,
+    input_global_TaxBracket4: 157500,
+    input_global_TaxBracket5: 200000,
+    input_global_TaxBracket6: 500000,
+    input_global_DCLimitYEAR: "2018",
+    input_global_TestDate: "2018-10-01"
   };
-  outputs = {
-    "output_show_fourth": "HCFSA",
-    "output_HCFSA_GAP": 650.0,
-    "output_MatchNewRate2": 0.09,
-    "output_MatchNewRate1": 0.08,
-    "output_FamilyHSA": 7900.0,
-    "output_RULE_PreAE": false,
-    "output_show_sixth": "OTHER",
-    "output_Year": 2019.0,
-    "output_RULE_RetNotContrib": false,
-    "output_RULE_RetMaxed": false,
-    "output_MissedValue_RET": 500.0,
-    "output_Shortfall": 500.0,
-    "output_MatchRemainingTotalEE": 3367.5599999999995,
-    "output_RULE_CDHPwithFSA": true,
-    "output_DCFSA_GAP": 3996.0,
-    "output_RULE_Newhire": false,
-    "output_MatchNewRateUnround": 0.08820204899777281,
-    "output_RetCatchup": 6000.0,
-    "output_show_second": "HSA",
-    "output_RULE_DCFSA_No": false,
-    "output_RetPctMax": 9.0,
-    "output_RULE_HCFSA_No": false,
-    "output_RULE_MedPPO": false,
-    "output_RULE_RetNoMatchData": false,
-    "output_RULE_MatchNotElig": false,
-    "output_RULE_Hardship": false,
-    "output_MatchNewRateFinal": 0.09,
-    "output_Order_DCFSA": 1.0,
-    "output_MatchDiffFromTarget": 460.33999999999924,
-    "output_MatchRemainingMonths": 5.0,
-    "output_MatchRemainingTotalComp": 67350.0,
-    "output_RULE_RetBonusAmt": true,
-    "output_TotalGap": 2637.0,
-    "output_RULE_MedNoCov": false,
-    "output_RULE_HSA_UnderMax": true,
-    "output_MatchPotential": 8960.4,
-    "output_MatchShortfallCalc": 4950.339999999999,
-    "output_RULE_OptLife": true,
-    "output_RULE_RetBonusPct": true,
-    "output_MatchRemainingPerMonthEE": 561.26,
-    "output_RULE_MatchProjJobData": true,
-    "output_HSA_Inc": 4900.0,
-    "output_MatchProjCompanyMatch": 6816.36,
-    "output_show_third": "RET",
-    "output_RULE_MedCDHP": true,
-    "output_show_first": "DCFSA",
-    "output_HSA_GAP": 975.0,
-    "output_show_fifth": "MEDICAL",
-    "output_RULE_HCFSA_Max": false,
-    "output_RULE_ClaimsHigh": true,
-    "output_RULE_RetDisplayMatch": true,
-    "output_MatchContNeedToMaximize": 2144.3999999999996,
-    "output_RULE_ClaimsNoFSA": false,
-    "output_RULE_NotBonusWindow": true,
-    "output_RULE_RetPlanLimit": false,
-    "output_RULE_SpouseLife": true,
-    "output_Order_HCFSA": 4.0,
-    "output_RULE_Spouse": true,
-    "output_MissedValue_HCFSA": 163.0,
-    "output_ReturnMonth": "late March",
-    "output_RetPct": 5.0,
-    "output_RULE_DCFSA_Max": false,
-    "output_CurrentDate": 43518.0,
-    "output_RetCatchupElection": 500.0,
-    "output_RULE_Age55": true,
-    "output_MatchRemainingPerMonthComp": 11225.0,
-    "output_SingleHSA": 4450.0,
-    "output_Order_RET": 3.0,
-    "output_RULE_Age50": true,
-    "output_RetContDate": "07/31/18",
-    "output_RULE_BonusWindow1": false,
-    "output_RULE_Ltd_Purpose": true,
-    "output_RULE_OptLife50": true,
-    "output_RULE_PostAE": true,
-    "output_RULE_DCFSA_UnderMax": true,
-    "output_RULE_HSA_No": false,
-    "output_RULE_FSA": true,
-    "output_Order_HSA": 2.0,
-    "output_RULE_RetAlertMatch": true,
-    "output_RetPctInc": 4.0,
-    "output_RULE_BonusWindow3": false,
-    "output_RULE_BonusWindow2": false,
-    "output_TotalClaims": 6000.0,
-    "output_RULE_HCFSA_Auto": true,
-    "output_RULE_HSA_Max": false,
-    "output_RULE_NotAE": true,
-    "output_RULE_RetCont4": false,
-    "output_RULE_DCFSA_YrEndBal": false,
-    "output_HSA_firm": 1000.0,
-    "output_RULE_HCFSA_UnderMax": true,
-    "output_RULE_AE": false,
-    "output_RetBonusSource": "Roth",
-    "output_RULE_RetIRS": false,
-    "output_RULE_MedEXPAT": false,
-    "output_MissedValue_HSA": 975.0,
-    "output_RULE_HCFSA_YrEndBal": false,
-    "output_RULE_BonusWindow": false,
-    "output_MissedValue_DCFSA": 999.0,
-    "output_RULE_RetSuppressMatch": false
-  }
-  constructor(private inputService: InputService) {
+  outputs = {};
+
+  //example of how to instantiate an external class for specialized purpose
+  //core = new coreClass(34, "universe", null, 7, 8);
+
+  constructor(private inputService: InputService) { //dependency injection
   }
 
   ngOnInit() {
 
   }
 
-  addGlobals(resp): void {
-    resp.input_global_SingleHSA = 3450;
-    resp.input_global_FamilyHSA = 6900;
-    resp.input_global_HSACatchup = 1000;
-    resp.input_global_DCFSA = 5000;
-    resp.input_global_HCFSA = 2650;
-    resp.input_global_LtdPurpHCFSA = 2650;
-    resp.input_global_DCLimit = 18500;
-    resp.input_global_401kCatchup = 6000;
-    resp.input_global_AEstart = "2018-10-10";
-    resp.input_global_AEend = "2018-11-01";
-    resp.input_global_TaxBracket1 = 9525;
-    resp.input_global_TaxBracket2 = 38700;
-    resp.input_global_TaxBracket3 = 82500;
-    resp.input_global_TaxBracket4 = 157500;
-    resp.input_global_TaxBracket5 = 200000;
-    resp.input_global_TaxBracket6 = 500000;
-    resp.input_global_DCLimitYEAR = "2018";
-    return resp;
-  }
-
-  add(): void {
-    console.log("Success with http");
-    if (JSON.parse(sessionStorage.getItem("data")) === null) {
-      this.data = this.localData_v6;
-      sessionStorage.setItem("data", JSON.stringify(this.data));
-      var resp: any = this.localData_v6;
-    } else {
-      resp = JSON.parse(sessionStorage.getItem("data"));
-    }
-
-    //This is necessary if you need to destroy the unneeded sections from the DOM - see above
-    if (sessionStorage.getItem("taxRate")) {
-      $('#tax-rate').val(sessionStorage.getItem("taxRate"));
-    }
-
-    //resp.input_TaxRate = $('#tax-rate').val();  //add the current tax rate to the input
-    resp = this.addGlobals(resp);                    //add the globals to the input
-
-    if (sessionStorage.getItem("customDate") !== null && sessionStorage.getItem("customDate") !== "") {
-      resp.input_global_TestDate = sessionStorage.getItem("customDate");
-    } else {
-      resp.input_global_TestDate = "2018-10-01";
-    }
-
-    sessionStorage.setItem("inputs", JSON.stringify(resp));
-    this.inputs = JSON.parse(sessionStorage.getItem("inputs"));
-
-    var resp1: string = JSON.stringify(resp);
-
-    console.log("My Inputs: " + resp1)
-
-    this.inputService.postData(resp1 as string)
+  call(): void {
+    $('#loader').fadeIn();
+    var input: string = JSON.stringify(this.inputs);
+    this.inputService.postData(input as string)
       .subscribe(results => {
         this.outputs = JSON.parse(JSON.stringify(results));
+        $(".headTitle").css("color", "green");
+        $('#loader').fadeOut();
       });
   }
 
+  
 }

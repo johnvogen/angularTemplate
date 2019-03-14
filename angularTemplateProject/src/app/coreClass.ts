@@ -1,7 +1,6 @@
 export class coreClass {
   greeting: string;
 
-
   constructor(private mySecretVariable: any, message: string, public myVariableA?: any, public myVariableB?: any, public myVariableC?: any, public myVariableD?: any) {
     this.greeting = message;
 
