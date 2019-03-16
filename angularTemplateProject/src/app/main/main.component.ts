@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-//import { coreClass } from '../coreClass';  //example of how to import an external class
+import { coreClass } from '../coreClass'; //referencing the external class 
 import { InputService } from '../input.service';
+//import { core } from '@angular/compiler';
 
 @Component({
   selector: 'app-main',
@@ -85,19 +86,28 @@ export class MainComponent implements OnInit {
     input_global_TaxBracket6: 500000,
     input_global_DCLimitYEAR: "2018",
     input_global_TestDate: "2018-10-01"
-  };
-  outputs = {};
+  };  //defined here in one place for simplicity but more likely to be cl=ollected from a form or sso inputs
+  outputs = {}; //defined here to later receive the results of the http call
+  cc: coreClass = new coreClass(25, "Good Morning!", 1, 2, 3, 4); //example of how to instantiate an external class for specialized purpose
 
-  //example of how to instantiate an external class for specialized purpose
-  //core = new coreClass(34, "universe", null, 7, 8);
-
-  constructor(private inputService: InputService) { //dependency injection
+  constructor(private inputService: InputService) { //dependency injection 
   }
 
   ngOnInit() {
-
+    $("button").on("click", function () {     //example of how to call a jquery method
+      alert("Hello");
+    });
   }
 
+  //two functions called from the html template
+  //this function calls a method of the external class coreClass
+  callCore(): void {
+    alert(this.cc.greet());
+  }
+
+  //this function makes an http post using angular's native http object rather than jquery's $.ajax. Angular will take care of updating the html after the call returns whereas jquery will not.
+  //It uses the inputService created for the purpose of making the http call.
+  //Services and the coding nomenclature (arrow functions, observables etc is all explained in the tour-of-heroes tutorial in Angular
   call(): void {
     $('#loader').fadeIn();
     var input: string = JSON.stringify(this.inputs);
@@ -108,6 +118,4 @@ export class MainComponent implements OnInit {
         $('#loader').fadeOut();
       });
   }
-
-  
 }

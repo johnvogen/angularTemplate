@@ -5,7 +5,7 @@ export class coreClass {
     this.greeting = message;
 
   }
-  greet() {
+  public greet() {
     return "Hello, " + this.greeting;
   }
   work() {
